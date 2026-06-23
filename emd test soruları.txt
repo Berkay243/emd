@@ -1,0 +1,32 @@
+1) Boş uzayda manyetik akı yoğunluğu B=y²ax+z²ay+x²az Wb/m² olarak verilmiştir. Bu bölgedeki J akım yoğunluğu .... A/m² ?
+
+
+2) Boş uzayda verilen bir akım dağılımının manyetik vektör potansiyeli A= 15e^-p.sin(fi)az Wb/m olarak verilmiştir. Buna göre p=5, 0≤fi≤π/2 , 0≤z≤10 sınırları ile tanımlı manyetik yüzeyden geçen manyetik akı nedir kaç Wb ? Not:(p ro olarak okunan harf fi de çizgili o, silindirik düzlemde kullanılan terimler) 
+
+
+3) P(2,5,-3) noktasında bulunan 4mC Luk bir yük. E= 2xyzax + x²zay + x²yaz V/m ve B= y²ax + z²ay + x²az Wb/m² alanlarının bulunduğu bir ortamda u = 1.4ax -3.2ay -az m/s hıza sahiptir. Bu P noktasında yüke etki eden kuvvet ... mN?
+
+
+4) Manyetik geçirgenliği μ1= 2.5μ0 olan 1. Bölge z < 0 olarak, μ2= 4μ0 olan 2. Bölge ise z > 0 olarak tanımlanmıştır. Eğer B1 = 6ax -4.2ay + 1.8az mWb/m² ise 2. Bölgedeki H2 .... A/m ve bu alanın sınır yüzeyiyle yaptığı açı ... ?
+
+
+5) bir koaksiyel kablo yarıçapı 1.2 cm olan bir iç iletken ve yarıçapı 1.8 cm olan bir dış iletkenden oluşmaktadır. İki iletken manyetik geçirgenliği μ=4μ0 olan yalıtkan bir ortamla ayrılmıştır. Kablo 3 metre uzunluğunda ise ve 25mA akım taşıyorsa yalıtkan ortamda depolanan manyetik enerji .... pj ?
+
+
+6) İletken bir çubuğun bir ucu orijinde topraklanmış olup diğer ucu z=0 düzleminde serbestçe hareket ettirilebilmektedir. Çubuk statik bir B= 60az mWb/m² manyetik alanında 30 rad/s açısal hızla dönmektedir. Çubuğun uzunluğu 8cm ise çubukta indüklenen gerilim ... mV ? 
+
+
+7) Bir otomobil 120km/saat hızla hareket etmektedir eğer Dünyanın manyetik alanı 4.3x10^-5 Wb/m² ise ve Dünyanın manyetik alan vektörü otomobilin normali ile 65 derecelik açı yapıyorsa, 1.6m lik otomobilin tamponunda indüklenen gerilim ..... mV?
+
+
+8) 20MHz frekanslı 50V genlikli bir gerilim jeneratörü plaka alanı 2.8cm² ve plakalar arası mesafe 0.2mm olan hava yalıtkanlı paralel plakalı bir kondansatöre bağlanmıştır. Bu kondansatörün dielektrik bölgesindeki yer değiştirme akım yoğunluğu ..... A/m² ve sistemden akan maksimum akım .... mA veya A ? 
+
+
+9) μ=μ0, e=9e0 ve sigma=4 S/m parametrelerine sahip bir dielektrik malzeme paralel plakalı bir kondansatörün plakaları arasına yerleştirilmiştir. Bu yapıda iletim akımı ve yerdeğiştirme akımının büyüklüklerinin birbirine eşit olduğu frekans .... GHz ?
+
+
+10) Homojen bir ortamda e=81e0 ve μ=μ0 olarak verilmiştir. Bu ortamda dalga denkleminin fazör çözümleri Fs= 10e^j(wt+Bx)ay V/m ve Hs= H0.e^j(wt+Bx)az A/m şeklindedir. Eğer sistem w=2πx10⁹ rad/s açısal frekansında çalışıyorsa B ve H0 nedir ?
+
+
+
+
