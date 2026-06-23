@@ -514,4 +514,88 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeModal();
 });
- 
+
+/* =============================================
+   FORMULA SCREEN
+   ============================================= */
+let _formulasPrevScreen = 'home'; // which screen to go back to
+
+function showFormulas() {
+    // remember where we came from
+    const active = document.querySelector('.screen.active');
+    _formulasPrevScreen = active ? active.id.replace('screen-', '') : 'home';
+
+    renderFormulaScreen();
+    showScreen('formulas');
+
+    // Clear search
+    const inp = document.getElementById('formula-search');
+    if (inp) inp.value = '';
+}
+
+function backFromFormulas() {
+    showScreen(_formulasPrevScreen);
+    // restore MathJax on target screen if needed
+    const target = document.getElementById('screen-' + _formulasPrevScreen);
+    if (target && window.MathJax) MathJax.typesetPromise && MathJax.typesetPromise([target]);
+}
+
+function renderFormulaScreen(filter = '') {
+    const container = document.getElementById('formula-container');
+    container.innerHTML = '';
+
+    const fLow = filter.toLowerCase();
+
+    FORMULA_CHAPTERS.forEach(ch => {
+        // Filter: check chapter title or any formula matches
+        const chMatch = !fLow ||
+            ch.title.toLowerCase().includes(fLow) ||
+            ch.weeks.toLowerCase().includes(fLow);
+
+        const matchingFormulas = ch.formulas.filter(f =>
+            !fLow ||
+            chMatch ||
+            f.description.toLowerCase().includes(fLow) ||
+            (f.note && f.note.toLowerCase().includes(fLow)) ||
+            f.latex.toLowerCase().includes(fLow)
+        );
+
+        if (!fLow || chMatch || matchingFormulas.length > 0) {
+            const formulasToShow = fLow && !chMatch ? matchingFormulas : ch.formulas;
+
+            const section = document.createElement('div');
+            section.className = 'formula-chapter';
+            section.id = 'fch-' + ch.id;
+
+            const formHtml = formulasToShow.map(f => `
+                <div class="formula-row" id="frow-${f.id}">
+                    <div class="formula-math">\\(${f.latex}\\)</div>
+                    <div class="formula-desc">${f.description}</div>
+                    ${f.note ? `<div class="formula-note">💡 ${f.note}</div>` : ''}
+                </div>
+            `).join('');
+
+            section.innerHTML = `
+                <div class="formula-chapter-header">
+                    <span class="formula-chapter-icon">${ch.icon}</span>
+                    <div>
+                        <div class="formula-chapter-title">${ch.title}</div>
+                        <div class="formula-chapter-week">${ch.weeks}</div>
+                    </div>
+                </div>
+                <div class="formula-list">
+                    ${formHtml}
+                </div>
+            `;
+
+            container.appendChild(section);
+        }
+    });
+
+    // MathJax
+    if (window.MathJax) MathJax.typesetPromise && MathJax.typesetPromise([container]);
+}
+
+function filterFormulas(val) {
+    renderFormulaScreen(val.trim());
+}
