@@ -907,17 +907,732 @@ const TEST_5 = {
 };
 
 /* ===================================================================
-   TEST 6 — İleri Seviye & Kavramsal
+   TEST 6 — Ters Problemler (Farklı Tarz A)
    =================================================================== */
 const TEST_6 = {
     id: "test6",
-    title: "Test 6 — İleri Seviye",
+    title: "Test 6 — Ters Problemler",
+    description: "Sonuçların verilip parametrelerin sorulduğu test",
+    icon: "🔄",
+    timeLimit: 0,
+    questions: [
+        {
+            id: "t6q1",
+            topic: "Curl & Akım Yoğunluğu",
+            text: "Boş uzayda \\(\\mathbf{B}=x^3\\mathbf{a}_x+y^3\\mathbf{a}_y+z^3\\mathbf{a}_z\\) Wb/m² verilmiştir. Bu bölgedeki \\(\\mathbf{J}\\) akım yoğunluğu nedir?",
+            choices: [
+                "\\(\\mathbf{J}=\\mathbf{0}\\)",
+                "\\(\\dfrac{1}{\\mu_0}(3x^2\\mathbf{a}_x+3y^2\\mathbf{a}_y+3z^2\\mathbf{a}_z)\\)",
+                "\\(3(x+y+z)\\mathbf{a}_z\\)",
+                "\\(\\dfrac{1}{\\mu_0}(x+y+z)\\mathbf{a}_y\\)"
+            ],
+            correct: 0,
+            explanation: "Manyetik alanın her bileşeni sadece kendi eksenine bağlı olduğundan (Bx x'e, By y'ye...), çapraz türevler sıfırdır. ∇×B=0 → J=0."
+        },
+        {
+            id: "t6q2",
+            topic: "Manyetik Vektör Potansiyel",
+            text: "Silindirik koordinatlarda \\(\\mathbf{A}=5\\rho^2\\mathbf{a}_z\\) Wb/m verilmiştir. Manyetik alanın \\(\\phi\\) bileşeni (\\(B_\\phi\\)) nedir?",
+            choices: [
+                "\\(-10\\rho\\) T",
+                "\\(10\\rho\\) T",
+                "\\(-5\\rho\\) T",
+                "\\(0\\) T"
+            ],
+            correct: 0,
+            explanation: "B = ∇×A formülünden silindirik koordinatlarda Az bileşeni varken: Bφ = -∂Az/∂ρ = -∂(5ρ²)/∂ρ = -10ρ T."
+        },
+        {
+            id: "t6q3",
+            topic: "Lorentz Kuvveti",
+            text: "Bir parçacık \\(\\mathbf{u}=5\\mathbf{a}_x\\) m/s hızla, \\(\\mathbf{B}=2\\mathbf{a}_y\\) T alanında sapmadan (\\(\\mathbf{F}_m=0\\)) ilerlemektedir. Ortamdaki E alanı nedir?",
+            choices: [
+                "\\(-10\\mathbf{a}_z\\) V/m",
+                "\\(10\\mathbf{a}_z\\) V/m",
+                "\\(-10\\mathbf{a}_x\\) V/m",
+                "\\(10\\mathbf{a}_y\\) V/m"
+            ],
+            correct: 0,
+            explanation: "F = Q(E + u×B) = 0 → E = -u×B. u×B = 5ax × 2ay = 10az. Dolayısıyla E = -10az V/m olmalıdır (Wien filtresi prensibi)."
+        },
+        {
+            id: "t6q4",
+            topic: "Sınır Koşulları",
+            text: "z=0 düzleminde \\(\\mu_1=2\\mu_0\\) ve \\(\\mu_2=5\\mu_0\\) bölgeleri vardır. \\(\\mathbf{H}_1=4\\mathbf{a}_x+3\\mathbf{a}_z\\) A/m ise, \\(\\mathbf{H}_2\\) nedir?",
+            choices: [
+                "\\(4\\mathbf{a}_x+1.2\\mathbf{a}_z\\) A/m",
+                "\\(4\\mathbf{a}_x+7.5\\mathbf{a}_z\\) A/m",
+                "\\(10\\mathbf{a}_x+3\\mathbf{a}_z\\) A/m",
+                "\\(1.6\\mathbf{a}_x+3\\mathbf{a}_z\\) A/m"
+            ],
+            correct: 0,
+            explanation: "Teğet H sürekli: H2x = H1x = 4. Normal B sürekli: B2z = B1z → μ2 H2z = μ1 H1z → 5μ0 H2z = 2μ0(3) → 5 H2z = 6 → H2z = 1.2 A/m."
+        },
+        {
+            id: "t6q5",
+            topic: "Manyetik Enerji",
+            text: "Bir koaksiyel kabloda \\(b/a=e^2\\), \\(\\mu=\\mu_0\\), \\(L=2\\) m'dir. Yalıtkandaki manyetik enerji 100 pJ ise akım (I) yaklaşık kaçtır?",
+            choices: [
+                "15.8 mA",
+                "31.6 mA",
+                "5.0 mA",
+                "25.0 mA"
+            ],
+            correct: 0,
+            explanation: "Wm = (μ₀ I² L / 4π) ln(b/a). 100e-12 = (4πe-7 × I² × 2 / 4π) × 2 = 4e-7 × I². I² = 2.5e-4 → I ≈ 1.58e-2 A = 15.8 mA."
+        },
+        {
+            id: "t6q6",
+            topic: "Dönen Çubuk EMF",
+            text: "10 cm uzunluğundaki çubuk B=50 mWb/m² alanında dönerken uçlarında 10 mV EMF indükleniyor. Çubuğun açısal hızı (\\(\\omega\\)) kaçtır?",
+            choices: [
+                "40 rad/s",
+                "20 rad/s",
+                "10 rad/s",
+                "80 rad/s"
+            ],
+            correct: 0,
+            explanation: "Vemf = 0.5 B L² ω → 10e-3 = 0.5 × 50e-3 × (0.1)² × ω → 10 = 0.25 ω → ω = 40 rad/s."
+        },
+        {
+            id: "t6q7",
+            topic: "Motionel EMF",
+            text: "Genişliği 2 m olan bir araç, dikey \\(B=4\\times 10^{-5}\\) T alanında ilerliyor. Tamponda 2.4 mV indükleniyorsa hızı kaç m/s'dir?",
+            choices: [
+                "30 m/s",
+                "15 m/s",
+                "60 m/s",
+                "12 m/s"
+            ],
+            correct: 0,
+            explanation: "Vemf = B L v → 2.4e-3 = 4e-5 × 2 × v → v = 2.4e-3 / 8e-5 = 30 m/s."
+        },
+        {
+            id: "t6q8",
+            topic: "Yer Değiştirme Akımı",
+            text: "Hava kondansatöründe \\(E_0=10^5\\) V/m iken maksimum yer değiştirme akımı yoğunluğu 0.5 A/m² ise frekans (f) yaklaşık kaçtır?",
+            choices: [
+                "89.9 kHz",
+                "45.0 kHz",
+                "179.8 kHz",
+                "282 kHz"
+            ],
+            correct: 0,
+            explanation: "Jd = ε₀ E₀ 2πf → 0.5 = 8.854e-12 × 10⁵ × 2πf → f = 0.5 / 5.56e-6 ≈ 89900 Hz = 89.9 kHz."
+        },
+        {
+            id: "t6q9",
+            topic: "Kayıp Frekansı",
+            text: "Bir ortamda (\\(\\epsilon=4\\epsilon_0\\)) kayıp frekansı \\(f_c=9\\) GHz ise iletkenlik (\\(\\sigma\\)) yaklaşık kaç S/m'dir?",
+            choices: [
+                "2.0 S/m",
+                "4.0 S/m",
+                "1.0 S/m",
+                "8.0 S/m"
+            ],
+            correct: 0,
+            explanation: "fc = σ / (2πε) → σ = fc × 2π × 4ε₀ = 9e9 × 2π × 4 × 8.854e-12 = 9e9 × 222.5e-12 ≈ 2.0 S/m."
+        },
+        {
+            id: "t6q10",
+            topic: "Dalga Denklemi",
+            text: "Manyetik olmayan (\\(\\mu=\\mu_0\\)) bir ortamda \\(\\beta=10\\pi\\) rad/m, \\(\\omega=2\\pi\\times10^8\\) rad/s ise malzemenin bağıl geçirgenliği (\\(\\epsilon_r\\)) kaçtır?",
+            choices: [
+                "225",
+                "15",
+                "25",
+                "100"
+            ],
+            correct: 0,
+            explanation: "vp = ω/β = 2πe8 / 10π = 2e7 m/s. Ayrıca vp = c / √εr → √εr = 3e8 / 2e7 = 15. εr = 15² = 225."
+        }
+    ]
+};
+
+/* ===================================================================
+   TEST 7 — Farklı Senaryolar (Farklı Tarz B)
+   =================================================================== */
+const TEST_7 = {
+    id: "test7",
+    title: "Test 7 — Farklı Senaryolar",
+    description: "Aynı formüllerin farklı fiziksel konseptlere uyarlanması",
+    icon: "✈️",
+    timeLimit: 0,
+    questions: [
+        {
+            id: "t7q1",
+            topic: "Curl & Akım Yoğunluğu",
+            text: "\\(\\mathbf{B}=\\sin(x)\\mathbf{a}_y\\) T olarak verilen periyodik manyetik alanın oluşturduğu \\(\\mathbf{J}\\) akım yoğunluğu nedir?",
+            choices: [
+                "\\(\\dfrac{1}{\\mu_0}\\cos(x)\\mathbf{a}_z\\)",
+                "\\(\\dfrac{1}{\\mu_0}\\sin(x)\\mathbf{a}_x\\)",
+                "\\(-\\dfrac{1}{\\mu_0}\\cos(x)\\mathbf{a}_z\\)",
+                "\\(0\\)"
+            ],
+            correct: 0,
+            explanation: "J = (1/μ₀)∇×B. ∇×B'nin z bileşeni = ∂By/∂x - ∂Bx/∂y = ∂(sin x)/∂x - 0 = cos(x). Sonuç: (cos x / μ₀) az."
+        },
+        {
+            id: "t7q2",
+            topic: "Manyetik Akı",
+            text: "Manyetik vektör potansiyeli \\(\\mathbf{A}=10\\sin(\\phi)\\mathbf{a}_z\\) Wb/m'dir. Z silindirik yüzeyinde (\\(\\rho=3, 0\\le\\phi\\le\\pi, 0\\le z\\le 2\\)) akı kaçtır?",
+            choices: [
+                "0 Wb",
+                "60 Wb",
+                "30 Wb",
+                "120 Wb"
+            ],
+            correct: 0,
+            explanation: "Bρ = (1/ρ)∂Az/∂φ = (10/ρ)cos(φ). Ψ = ∫∫ Bρ ρ dφ dz = ∫₀² dz ∫₀^π 10 cos(φ) dφ = 20 [sin(φ)]₀^π = 20(0 - 0) = 0 Wb."
+        },
+        {
+            id: "t7q3",
+            topic: "Lorentz Kuvveti",
+            text: "Bir elektron (\\(Q=-1.6\\times10^{-19}\\) C), Ekvator'da yatay \\(10^6\\mathbf{a}_x\\) m/s hızla uçuyor. Dünya B alanı \\(5\\times10^{-5}\\mathbf{a}_z\\) T ise kuvvet nedir? (E=0)",
+            choices: [
+                "\\(8\\times10^{-18}\\mathbf{a}_y\\) N",
+                "\\(-8\\times10^{-18}\\mathbf{a}_y\\) N",
+                "\\(8\\times10^{-18}\\mathbf{a}_x\\) N",
+                "\\(-8\\times10^{-18}\\mathbf{a}_z\\) N"
+            ],
+            correct: 0,
+            explanation: "F = Q(u×B) = -1.6e-19 (10⁶ax × 5e-5az) = -1.6e-19 (50(-ay)) = 8e-18 ay N."
+        },
+        {
+            id: "t7q4",
+            topic: "Sınır Koşulları",
+            text: "Hava (\\(\\mu_1=\\mu_0\\)) ve Demir (\\(\\mu_2=1000\\mu_0\\)) z=0 düzleminde komşudur. Havada \\(\\mathbf{B}_1=2\\mathbf{a}_x+5\\mathbf{a}_z\\) T ise demirdeki \\(B_{2x}\\) nedir?",
+            choices: [
+                "2000 T",
+                "2 T",
+                "0.002 T",
+                "5000 T"
+            ],
+            correct: 0,
+            explanation: "H1x = B1x/μ1 = 2/μ₀. H2x = H1x = 2/μ₀. B2x = μ2 H2x = 1000μ₀ × (2/μ₀) = 2000 T (Çok yüksek, demir manyetizasyonu çok yüksektir)."
+        },
+        {
+            id: "t7q5",
+            topic: "Manyetik Enerji",
+            text: "Bir MR cihazı koaksiyel kablosunda (\\(a=0.5\\)m, \\(b=1\\)m, \\(\\mu=\\mu_0\\), \\(L=2\\)m) 100 A akım geçmektedir. Manyetik enerji nedir? (ln2≈0.693)",
+            choices: [
+                "≈ 1.386 mJ",
+                "≈ 2.77 mJ",
+                "≈ 0.693 mJ",
+                "≈ 13.8 mJ"
+            ],
+            correct: 0,
+            explanation: "Wm = (4πe-7 × 10000 × 2 / 4π) ln(2) = 2e-3 × 0.693 = 1.386e-3 J = 1.386 mJ."
+        },
+        {
+            id: "t7q6",
+            topic: "Dönen Çubuk EMF",
+            text: "Rüzgar türbini pervanesi (L=40 m) dünyanın manyetik alanına (B=5×10⁻⁵ T) dik olarak \\(\\omega=2\\) rad/s ile dönüyor. İndüklenen EMF nedir?",
+            choices: [
+                "80 mV",
+                "160 mV",
+                "40 mV",
+                "20 mV"
+            ],
+            correct: 0,
+            explanation: "Vemf = 0.5 B L² ω = 0.5 × 5e-5 × 1600 × 2 = 5e-5 × 1600 = 8e-2 V = 80 mV."
+        },
+        {
+            id: "t7q7",
+            topic: "Motionel EMF",
+            text: "Bir yolcu uçağı (kanat açıklığı 60 m), 900 km/h hızla yere paralel uçmaktadır. Yerin dikey manyetik alanı 4×10⁻⁵ T ise kanatlardaki EMF nedir?",
+            choices: [
+                "600 mV",
+                "300 mV",
+                "1.2 V",
+                "150 mV"
+            ],
+            correct: 0,
+            explanation: "v = 900/3.6 = 250 m/s. Vemf = B dikey × L × v = 4e-5 × 60 × 250 = 4e-5 × 15000 = 0.6 V = 600 mV."
+        },
+        {
+            id: "t7q8",
+            topic: "Yer Değiştirme Akımı",
+            text: "Cam dielektrikli (\\(\\epsilon_r=4\\)) bir kondansatörde \\(E_0=10^4\\) V/m, \\(f=1\\) MHz'dir. Jd_max yaklaşık kaçtır?",
+            choices: [
+                "2.22 A/m²",
+                "0.55 A/m²",
+                "4.44 A/m²",
+                "8.88 A/m²"
+            ],
+            correct: 0,
+            explanation: "Jd_max = 4 × 8.854e-12 × 10⁴ × 2π × 10⁶ = 35.416e-12 × 2πe10 ≈ 222.5e-2 ≈ 2.22 A/m²."
+        },
+        {
+            id: "t7q9",
+            topic: "Kayıp Frekansı",
+            text: "Deniz suyunun (\\(\\sigma=4\\) S/m, \\(\\epsilon_r=81\\)) kayıp frekansı yaklaşık kaç MHz'dir?",
+            choices: [
+                "888 MHz",
+                "444 MHz",
+                "1.77 GHz",
+                "11 MHz"
+            ],
+            correct: 0,
+            explanation: "fc = 4 / (2π × 81 × 8.854e-12) = 4 / (4505e-12) = 8.88e8 Hz = 888 MHz."
+        },
+        {
+            id: "t7q10",
+            topic: "Dalga Denklemi",
+            text: "Polietilen (\\(\\epsilon_r=2.25, \\mu_r=1\\)) içinde ilerleyen bir dalganın karakteristik empedansı (\\(\\eta\\)) kaçtır?",
+            choices: [
+                "\\(80\\pi\\approx251\\Omega\\)",
+                "\\(120\\pi\\approx377\\Omega\\)",
+                "\\(40\\pi\\approx125\\Omega\\)",
+                "\\(160\\pi\\approx502\\Omega\\)"
+            ],
+            correct: 0,
+            explanation: "η = 120π / √2.25 = 120π / 1.5 = 80π Ω."
+        }
+    ]
+};
+
+/* ===================================================================
+   TEST 8 — Vektörel Değişimler (Farklı Tarz C)
+   =================================================================== */
+const TEST_8 = {
+    id: "test8",
+    title: "Test 8 — Vektörel Değişimler",
+    description: "Alan yönlerinin ve koordinat eksenlerinin değiştirildiği sorular",
+    icon: "🧭",
+    timeLimit: 0,
+    questions: [
+        {
+            id: "t8q1",
+            topic: "Curl & Akım Yoğunluğu",
+            text: "Boş uzayda \\(\\mathbf{B}=e^{-y}\\mathbf{a}_x\\) T'dir. \\(\\mathbf{J}\\) nedir?",
+            choices: [
+                "\\(\\dfrac{e^{-y}}{\\mu_0}\\mathbf{a}_z\\)",
+                "\\(-\\dfrac{e^{-y}}{\\mu_0}\\mathbf{a}_z\\)",
+                "\\(\\dfrac{e^{-y}}{\\mu_0}\\mathbf{a}_y\\)",
+                "\\(0\\)"
+            ],
+            correct: 0,
+            explanation: "J = (1/μ₀)(∂By/∂x - ∂Bx/∂y) az = (1/μ₀)(0 - (-e⁻ʸ)) az = (e⁻ʸ/μ₀) az."
+        },
+        {
+            id: "t8q2",
+            topic: "Manyetik Vektör Potansiyel",
+            text: "Küresel koordinatlarda vektör potansiyeli sadece radyal yöndedir: \\(\\mathbf{A}=\\frac{10}{r}\\mathbf{a}_r\\). Manyetik alan (B) nedir?",
+            choices: [
+                "\\(0\\)",
+                "\\(\\frac{10}{r^2}\\mathbf{a}_\\theta\\)",
+                "\\(\\frac{10}{r^2}\\mathbf{a}_\\phi\\)",
+                "\\(-\\frac{10}{r^2}\\mathbf{a}_r\\)"
+            ],
+            correct: 0,
+            explanation: "Sadece Ar varsa ve r'ye bağlıysa, küresel curl formülündeki tüm ilgili türevler sıfırdır (açısal türev yok). B = ∇×A = 0."
+        },
+        {
+            id: "t8q3",
+            topic: "Lorentz Kuvveti",
+            text: "Q=5 mC. Parçacık \\(\\mathbf{u}=3\\mathbf{a}_z\\) m/s hızla, \\(\\mathbf{B}=2\\mathbf{a}_x+4\\mathbf{a}_y\\) T alanında hareket ediyor (E=0). Kuvvet nedir?",
+            choices: [
+                "\\(-60\\mathbf{a}_x+30\\mathbf{a}_y\\) mN",
+                "\\(60\\mathbf{a}_x-30\\mathbf{a}_y\\) mN",
+                "\\(30\\mathbf{a}_x-60\\mathbf{a}_y\\) mN",
+                "\\(-30\\mathbf{a}_x+60\\mathbf{a}_y\\) mN"
+            ],
+            correct: 0,
+            explanation: "u×B = 3az × (2ax + 4ay) = 6(az×ax) + 12(az×ay) = 6ay - 12ax. F = 5e-3 (6ay - 12ax) = -60ax + 30ay mN."
+        },
+        {
+            id: "t8q4",
+            topic: "Sınır Koşulları",
+            text: "Sınır yüzeyi bu kez **x=0 düzlemidir**. \\(\\mu_1=2\\mu_0\\), \\(\\mu_2=4\\mu_0\\). \\(\\mathbf{B}_1=3\\mathbf{a}_x+4\\mathbf{a}_y\\) T ise \\(\\mathbf{H}_2\\) nedir?",
+            choices: [
+                "\\(\\dfrac{0.75\\mathbf{a}_x+2\\mathbf{a}_y}{\\mu_0}\\)",
+                "\\(\\dfrac{3\\mathbf{a}_x+2\\mathbf{a}_y}{\\mu_0}\\)",
+                "\\(\\dfrac{1.5\\mathbf{a}_x+4\\mathbf{a}_y}{\\mu_0}\\)",
+                "\\(\\dfrac{3\\mathbf{a}_x+4\\mathbf{a}_y}{\\mu_0}\\)"
+            ],
+            correct: 0,
+            explanation: "Normal x ekseni. Bx sürekli → B2x = 3 → H2x = 3/4μ₀ = 0.75/μ₀. Teğet y ekseni. H1y = 4/2μ₀ = 2/μ₀. H2y = H1y = 2/μ₀. Sonuç: (0.75ax + 2ay)/μ₀."
+        },
+        {
+            id: "t8q5",
+            topic: "Endüktans",
+            text: "Manyetik enerji yerine Endüktans (\\(L=\\frac{2W_m}{I^2}\\)) soruluyor. Koaksiyel kabloda (\\(L_{uzunluk}=1\\)m, \\(b/a=e\\), \\(\\mu=\\mu_0\\)) endüktans nedir?",
+            choices: [
+                "0.2 μH",
+                "0.4 μH",
+                "2.0 μH",
+                "0.1 μH"
+            ],
+            correct: 0,
+            explanation: "L_ind = (μ₀ L / 2π) ln(b/a) = (4πe-7 × 1 / 2π) ln(e) = 2e-7 H = 0.2 μH."
+        },
+        {
+            id: "t8q6",
+            topic: "Dönen Çubuk EMF",
+            text: "Çubuk z ekseni yerine **y ekseni** etrafında dönüyor (u hızı x-z düzleminde). Alan \\(B=10\\mathbf{a}_y\\) T. (L=2 m, ω=5 rad/s). EMF nedir?",
+            choices: [
+                "100 V",
+                "50 V",
+                "200 V",
+                "0 V"
+            ],
+            correct: 0,
+            explanation: "Dönüş ekseni y, manyetik alan da y ekseninde (birbirine paralel). Çubuk u×B sonucu aynı formülü verir: V = 0.5 B L² ω = 0.5 × 10 × 4 × 5 = 100 V."
+        },
+        {
+            id: "t8q7",
+            topic: "Motionel EMF",
+            text: "Bir denizaltı (uzunluk L=15m, z-ekseni boyunca uzanıyor), +x yönünde 20 m/s hızla gidiyor. B alanı \\(5\\times10^{-5}\\mathbf{a}_y\\) T ise EMF?",
+            choices: [
+                "15 mV",
+                "30 mV",
+                "7.5 mV",
+                "0 mV"
+            ],
+            correct: 0,
+            explanation: "u×B = 20ax × 5e-5ay = 1e-3 az. Vemf = ∫(u×B)·dl = 1e-3 × 15 = 15e-3 V = 15 mV."
+        },
+        {
+            id: "t8q8",
+            topic: "Yer Değiştirme Akımı",
+            text: "İki özdeş hava kondansatöründen birine f, diğerine 3f frekanslı aynı genlikte gerilim uygulanıyor. Maksimum Jd oranları (\\(J_{d2}/J_{d1}\\)) nedir?",
+            choices: [
+                "3",
+                "9",
+                "1/3",
+                "1 (Değişmez)"
+            ],
+            correct: 0,
+            explanation: "Jd = ε₀ E₀ ω = ε₀ E₀ 2πf. Frekans 3 katına çıkarsa Jd de tam 3 katına çıkar."
+        },
+        {
+            id: "t8q9",
+            topic: "Kayıp Frekansı",
+            text: "Bir ortamda iletim ve yer değiştirme akım yoğunluklarının büyüklükleri tam eşittir (\\(\\omega = \\omega_c\\)). Bu durumda kayıp tanjantı (\\(\\tan\\delta\\)) kaçtır?",
+            choices: [
+                "1",
+                "0",
+                "Sonsuz",
+                "0.5"
+            ],
+            correct: 0,
+            explanation: "Kayıp tanjantı = Jc / Jd = σ / (ωε). Akımlar eşitse bu oran tam 1'dir."
+        },
+        {
+            id: "t8q10",
+            topic: "Dalga Denklemi",
+            text: "Boş uzayda bir dalga **-x yönünde** ilerliyor. E alanı +y yönünde (\\(E_0\\cos(\\omega t+\\beta x)\\mathbf{a}_y\\)) ise H alanının yönü nedir?",
+            choices: [
+                "\\(-a_z\\)",
+                "\\(+a_z\\)",
+                "\\(-a_y\\)",
+                "\\(+a_x\\)"
+            ],
+            correct: 0,
+            explanation: "Dalga yayılım yönü (k) = -ax. k × E yönü H'ı verir. -ax × ay = -az."
+        }
+    ]
+};
+
+/* ===================================================================
+   TEST 9 — Oranlar ve Kavramsal Yorum (Farklı Tarz D)
+   =================================================================== */
+const TEST_9 = {
+    id: "test9",
+    title: "Test 9 — Oranlar ve Yorum",
+    description: "Fiziksel yasaların isimleri, oranlar ve limit durum analizleri",
+    icon: "⚖️",
+    timeLimit: 0,
+    questions: [
+        {
+            id: "t9q1",
+            topic: "Maxwell Denklemleri",
+            text: "\\(\\nabla \\cdot \\mathbf{B} = 0\\) denkleminin fiziksel literatürdeki yaygın adı nedir?",
+            choices: [
+                "Manyetizma için Gauss Yasası",
+                "Ampere Yasası",
+                "Faraday Yasası",
+                "Lenz Yasası"
+            ],
+            correct: 0,
+            explanation: "Elektrik için Gauss yasası ∇·D = ρ iken, manyetik monopol olmadığı için manyetizma için Gauss yasası ∇·B = 0'dır."
+        },
+        {
+            id: "t9q2",
+            topic: "Manyetik Akı",
+            text: "Manyetik akı birimi Weber (Wb)'in eşdeğeri hangisidir?",
+            choices: [
+                "Tesla · m² (veya Volt · saniye)",
+                "Amper / m",
+                "Tesla / m²",
+                "Henry / metre"
+            ],
+            correct: 0,
+            explanation: "Manyetik akı (Φ) B alanının yüzey integralidir, birimi T·m²'dir. Ayrıca Faraday yasasına göre (V = dΦ/dt) Volt·saniye'ye eşittir."
+        },
+        {
+            id: "t9q3",
+            topic: "Lorentz Kuvveti",
+            text: "Bir elektronun birbirine dik düzgün E ve B alanlarında doğrusal sapmadan (F=0) ilerlemesi için hızının büyüklüğü (Wien Filtresi şartı) ne olmalıdır?",
+            choices: [
+                "\\(|E| / |B|\\)",
+                "\\(|B| / |E|\\)",
+                "\\(|E| \\cdot |B|\\)",
+                "\\(|E|^2 / |B|\\)"
+            ],
+            correct: 0,
+            explanation: "Q(E + u×B) = 0 → E = -u×B. Vektörler dikse büyüklükleri E = uB → u = E/B olmalıdır."
+        },
+        {
+            id: "t9q4",
+            topic: "Sınır Koşulları",
+            text: "Hava (\\(\\mu_1=\\mu_0\\)) ve Demir (\\(\\mu_2=100\\mu_0\\)) sınırında manyetik alan çizgisi havada normalle 45° açı yapıyorsa, demirdeki açı (\\(\\theta_2\\)) hakkında ne söylenebilir?",
+            choices: [
+                "\\(\\theta_2 \\approx 89.4°\\) (Yüzeye çok yakın, neredeyse teğet)",
+                "\\(\\theta_2 \\approx 0°\\) (Normale çok yakın, dikey)",
+                "\\(\\theta_2 = 45°\\) (Açı değişmez)",
+                "\\(\\theta_2 \\approx 45.6°\\) (Çok az sapar)"
+            ],
+            correct: 0,
+            explanation: "tan(θ1)/tan(θ2) = μ1/μ2. tan(45°)/tan(θ2) = 1/100 → tan(θ2) = 100. θ2 açı olarak 90°'ye çok yakındır (89.4°). Demir, alan çizgilerini içine hapseder."
+        },
+        {
+            id: "t9q5",
+            topic: "Manyetik Enerji",
+            text: "Bir koaksiyel kabloda iç yarıçap sabitken dış yarıçap e katına çıkarılırsa (\\(b \\rightarrow e\\cdot b\\)), manyetik enerji değişimi ne ile orantılıdır?",
+            choices: [
+                "1 birim artış (\\(\\ln(e)=1\\) eklentisi)",
+                "e katına çıkar",
+                "Değişmez",
+                "e² katına çıkar"
+            ],
+            correct: 0,
+            explanation: "Wm ∝ ln(b/a). Yeni enerji ∝ ln(eb/a) = ln(e) + ln(b/a) = 1 + ln(b/a). Enerji sabit bir miktar (ln(e)=1 orantısında) artar."
+        },
+        {
+            id: "t9q6",
+            topic: "Dönen Çubuk EMF",
+            text: "Dönen bir çubuğun açısal hızı (\\(\\omega\\)) 2 katına çıkarılıp, boyu (L) yarıya (L/2) indirilirse indüklenen EMF nasıl değişir?",
+            choices: [
+                "Yarıya düşer",
+                "Aynı kalır",
+                "4 katına çıkar",
+                "2 katına çıkar"
+            ],
+            correct: 0,
+            explanation: "Vemf ∝ L²ω. Yeni Vemf ∝ (L/2)² × (2ω) = (L²/4) × 2ω = 0.5 (L²ω). Yani yarıya düşer."
+        },
+        {
+            id: "t9q7",
+            topic: "Motionel EMF",
+            text: "Bir araç Ekvator'dan Kutuplara doğru ilerlerken yerin manyetik alanının dikey bileşeni artar, yatay bileşeni azalır. Tampondaki (yatay) indüklenen EMF nasıl değişir?",
+            choices: [
+                "Artar (Çünkü sadece dikey bileşen tamponu keser)",
+                "Azalır (Yatay alan azaldığı için)",
+                "Değişmez (Toplam alan sabit kaldığı için)",
+                "Sıfır olur"
+            ],
+            correct: 0,
+            explanation: "Tamponda indüklenen gerilim, aracın hareket yönüne ve tampon eksenine dik olan (yani dikey) B bileşeniyle orantılıdır. Dikey bileşen arttıkça EMF artar."
+        },
+        {
+            id: "t9q8",
+            topic: "Yer Değiştirme Akımı",
+            text: "Bir kondansatörün plakaları arasına dielektrik sabiti \\(\\epsilon_r=5\\) olan bir malzeme konursa, maksimum yer değiştirme akımı yoğunluğu hava durumuna göre nasıl değişir?",
+            choices: [
+                "5 katına çıkar",
+                "1/5'ine düşer",
+                "Değişmez",
+                "25 katına çıkar"
+            ],
+            correct: 0,
+            explanation: "Jd = ε(∂E/∂t). E aynı tutuluyorsa, ε 5 katına çıktığı için Jd de 5 katına çıkar."
+        },
+        {
+            id: "t9q9",
+            topic: "Kayıp Frekansı",
+            text: "Bir malzemenin kayıp frekansı \\(f_c\\) olsun. Ortama uygulanan frekans \\(f \\gg f_c\\) (çok yüksek frekans) olursa malzeme fiziksel olarak nasıl davranır?",
+            choices: [
+                "İyi bir yalıtkan (Dielektrik) olarak davranır",
+                "Mükemmel iletken olarak davranır",
+                "Süperiletken olur",
+                "Manyetik malzemeye dönüşür"
+            ],
+            correct: 0,
+            explanation: "f >> fc demek ω >> σ/ε demek, yani Jd >> Jc (yer değiştirme akımı iletime baskındır). Bu durum iyi dielektriklerin karakteristiğidir."
+        },
+        {
+            id: "t9q10",
+            topic: "Dalga Denklemi",
+            text: "Kayıpsız manyetik olmayan (\\(\\mu_r=1\\)) bir ortamda dalganın faz hızı ışık hızının yarısıysa (c/2), malzemenin bağıl geçirgenliği (\\(\\epsilon_r\\)) kaçtır?",
+            choices: [
+                "4",
+                "2",
+                "0.5",
+                "0.25"
+            ],
+            correct: 0,
+            explanation: "vp = c / √εr = c/2. Buradan √εr = 2 → εr = 4."
+        }
+    ]
+};
+
+/* ===================================================================
+   TEST 10 — Karma Deneme Sınavı (Farklı Tarz E)
+   =================================================================== */
+const TEST_10 = {
+    id: "test10",
+    title: "Test 10 — Karma Deneme",
+    description: "Sınav formatına uygun kapsamlı ve şaşırtmacalı sorular",
+    icon: "📝",
+    timeLimit: 2400,
+    questions: [
+        {
+            id: "t10q1",
+            topic: "Curl & Akım Yoğunluğu",
+            text: "\\(\\mathbf{B}=\\cos(y)\\mathbf{a}_x - \\sin(x)\\mathbf{a}_y\\) T ise \\(\\nabla\\times\\mathbf{B}\\) nedir?",
+            choices: [
+                "\\((\\sin(y)-\\cos(x))\\mathbf{a}_z\\)",
+                "\\((\\cos(x)-\\sin(y))\\mathbf{a}_z\\)",
+                "\\(0\\)",
+                "\\((\\sin(x)+\\cos(y))\\mathbf{a}_z\\)"
+            ],
+            correct: 0,
+            explanation: "∇×B = (∂By/∂x - ∂Bx/∂y)az = (-cos(x) - (-sin(y)))az = (sin(y) - cos(x))az."
+        },
+        {
+            id: "t10q2",
+            topic: "Manyetik Vektör Potansiyel",
+            text: "Düz, uzun ve ince bir telin uzağında manyetik vektör potansiyel (\\(A_z\\)) akımla aynı yöndedir. B alanı için hangi işlem doğrudur?",
+            choices: [
+                "\\(\\mathbf{B} = \\nabla\\times\\mathbf{A}\\) ile rotasyon alınır",
+                "\\(\\mathbf{B} = \\nabla\\cdot\\mathbf{A}\\) ile diverjans alınır",
+                "\\(\\mathbf{B} = \\nabla\\mathbf{A}\\) ile gradyan alınır",
+                "\\(\\mathbf{B} = \\int\\mathbf{A} dl\\) integrali alınır"
+            ],
+            correct: 0,
+            explanation: "Manyetik alan her zaman vektör potansiyelinin rotasyoneli (curl) alınarak bulunur: B = ∇×A."
+        },
+        {
+            id: "t10q3",
+            topic: "Lorentz Kuvveti",
+            text: "Bir yük \\(\\mathbf{u}=2\\mathbf{a}_x+2\\mathbf{a}_y\\) m/s hızla, \\(\\mathbf{B}=5\\mathbf{a}_z\\) T alanına giriyor. \\(\\mathbf{u}\\times\\mathbf{B}\\) vektörü nedir?",
+            choices: [
+                "\\(10\\mathbf{a}_x - 10\\mathbf{a}_y\\)",
+                "\\(-10\\mathbf{a}_x + 10\\mathbf{a}_y\\)",
+                "\\(10\\mathbf{a}_z\\)",
+                "\\(20\\mathbf{a}_x + 20\\mathbf{a}_y\\)"
+            ],
+            correct: 0,
+            explanation: "u×B = (2ax + 2ay) × 5az = 10(ax×az) + 10(ay×az) = -10ay + 10ax = 10ax - 10ay."
+        },
+        {
+            id: "t10q4",
+            topic: "Sınır Koşulları (Yüzey Akımlı)",
+            text: "İki bölge arasındaki sınırda \\(\\mathbf{K}=5\\mathbf{a}_y\\) A/m yüzey akımı var. Normal yön \\(\\mathbf{a}_z\\). Sınır koşulu (\\(\\mathbf{a}_n \\times (\\mathbf{H}_2 - \\mathbf{H}_1) = \\mathbf{K}\\)) gereği \\(H_{2x}-H_{1x}\\) farkı kaçtır?",
+            choices: [
+                "5 A/m",
+                "-5 A/m",
+                "0 A/m",
+                "Sonsuz"
+            ],
+            correct: 0,
+            explanation: "az × (H2 - H1) = az × (ΔHx ax + ΔHy ay) = ΔHx ay - ΔHy ax = 5ay. Buradan ΔHx = 5 ve ΔHy = 0 bulunur. H2x - H1x = 5 A/m."
+        },
+        {
+            id: "t10q5",
+            topic: "Manyetik Enerji",
+            text: "Hava ortamında manyetik alan B=2 T ise ortamdaki manyetik enerji yoğunluğu (\\(w_m\\)) kaç J/m³'tür?",
+            choices: [
+                "\\(10^7 / 2\\pi\\)",
+                "\\(10^7 / 4\\pi\\)",
+                "\\(4\\pi \\times 10^{-7}\\)",
+                "\\(8\\pi \\times 10^{-7}\\)"
+            ],
+            correct: 0,
+            explanation: "wm = B² / 2μ₀ = 2² / (2 × 4πe-7) = 4 / (8πe-7) = (4/8π)e7 = 0.5e7 / π = 10⁷ / 2π J/m³."
+        },
+        {
+            id: "t10q6",
+            topic: "Dönen Çubuk EMF",
+            text: "Yarıçapı R olan iletken bir disk, B alanına dik eksende ω hızıyla dönüyor. Merkez ile kenar arasındaki EMF, dönen çubuk ile aynı mantıkta neye eşittir?",
+            choices: [
+                "\\(0.5 B R^2 \\omega\\)",
+                "\\(B R^2 \\omega\\)",
+                "\\(B R \\omega\\)",
+                "\\(0\\)"
+            ],
+            correct: 0,
+            explanation: "Diskin herhangi bir radial yarıçap çizgisi dönen çubuk gibi davranır, formül çubukla aynıdır: V = 0.5 B R² ω."
+        },
+        {
+            id: "t10q7",
+            topic: "Motionel EMF",
+            text: "100 km/h (≈27.78 m/s) hızla ilerleyen 2 m genişliğindeki aracın tamponunda 1 mV oluşuyorsa B_dikey (T cinsinden) kaçtır?",
+            choices: [
+                "\\(1.8 \\times 10^{-5}\\)",
+                "\\(3.6 \\times 10^{-5}\\)",
+                "\\(5.4 \\times 10^{-5}\\)",
+                "\\(0.9 \\times 10^{-5}\\)"
+            ],
+            correct: 0,
+            explanation: "1e-3 = (100/3.6) × B × 2. B = 3.6e-3 / 200 = 1.8e-5 T (18 μT)."
+        },
+        {
+            id: "t10q8",
+            topic: "Yer Değiştirme Akımı",
+            text: "İdeal kondansatörde (\\(I_d = C \\frac{dV}{dt}\\)), C=10 pF, V(t) = 5sin(10⁶t) ise maksimum yer değiştirme akımı (\\(I_{d,max}\\) ) kaç μA'dır?",
+            choices: [
+                "50 μA",
+                "10 μA",
+                "25 μA",
+                "5 μA"
+            ],
+            correct: 0,
+            explanation: "Id_max = C × V_max × ω = 10e-12 × 5 × 10⁶ = 50e-6 A = 50 μA."
+        },
+        {
+            id: "t10q9",
+            topic: "Kayıp Frekansı",
+            text: "Bir dielektrikte (\\(\\sigma=10^{-3}\\) S/m, \\(\\epsilon_r=4\\)) 10 MHz'de kayıp tanjantı (\\(\\tan\\delta = \\frac{\\sigma}{\\omega\\epsilon}\\)) yaklaşık kaçtır?",
+            choices: [
+                "0.45",
+                "1.00",
+                "0.22",
+                "2.22"
+            ],
+            correct: 0,
+            explanation: "tanδ = 1e-3 / (2πe7 × 4 × 8.854e-12) = 1e-3 / 2.22e-3 ≈ 0.45."
+        },
+        {
+            id: "t10q10",
+            topic: "Dalga Denklemi",
+            text: "Hava ortamında elektrik alan \\(E = 50 \\cos(\\omega t - \\beta z)\\mathbf{a}_x\\) V/m ise manyetik alan H'ın yönü ve genliği (A/m) nedir?",
+            choices: [
+                "\\(0.133 \\mathbf{a}_y\\)",
+                "\\(0.133 \\mathbf{a}_z\\)",
+                "\\(377 \\mathbf{a}_y\\)",
+                "\\(-0.133 \\mathbf{a}_y\\)"
+            ],
+            correct: 0,
+            explanation: "Dalga +z'ye gidiyor. k×E ∝ H → az×ax = ay. Genlik H₀ = E₀/η₀ = 50/120π ≈ 50/377 ≈ 0.133 A/m. Sonuç 0.133 ay."
+        }
+    ]
+};
+
+/* ===================================================================
+   TEST 11 — İleri Seviye & Kavramsal (Eski Test 6)
+   =================================================================== */
+const TEST_11 = {
+    id: "test11",
+    title: "Test 11 — İleri Seviye",
     description: "Daha zorlu sayısal hesaplamalar ve karma konular",
     icon: "🔥",
     timeLimit: 2400,
     questions: [
         {
-            id: "t6q1",
+            id: "t11q1",
             topic: "Maxwell Denklemleri",
             text: "Durağan (statik) manyetik alanda Maxwell'in hangi denklemi J akım yoğunluğunu B ile ilişkilendirir?",
             choices: [
@@ -930,7 +1645,7 @@ const TEST_6 = {
             explanation: "Ampere yasasının statik hali: ∇×H=J. H=B/μ olduğundan J=(1/μ)∇×B."
         },
         {
-            id: "t6q2",
+            id: "t11q2",
             topic: "Manyetik Akı Sürekliliği",
             text: "\\(\\nabla\\cdot\\mathbf{B}=0\\) ifadesi fiziksel olarak ne anlama gelir?",
             choices: [
@@ -943,7 +1658,7 @@ const TEST_6 = {
             explanation: "∇·B=0, manyetik alan çizgilerinin kapalı eğriler olduğunu ve manyetik tekil kutup (monopol) bulunmadığını ifade eder."
         },
         {
-            id: "t6q3",
+            id: "t11q3",
             topic: "Lorentz Kuvveti",
             text: "Q=−5 μC, \\(\\mathbf{u}=2\\mathbf{a}_z\\) m/s, \\(\\mathbf{B}=3\\mathbf{a}_x\\) T ise \\(\\mathbf{F}_m=Q(\\mathbf{u}\\times\\mathbf{B})\\) kaçtır?",
             choices: [
@@ -956,7 +1671,7 @@ const TEST_6 = {
             explanation: "u×B=2az×3ax=6(az×ax)=6(−ay)=−6ay. Fm=Q(u×B)=(−5×10⁻⁶)(−6ay)=+30×10⁻⁶ay=+30μN·ay"
         },
         {
-            id: "t6q4",
+            id: "t11q4",
             topic: "Sınır Koşulları",
             text: "İki manyetik bölge arasında yüzey akımı yoksa teğetsel H ve normal B bileşenlerine uygulanan sınır koşulları hangisidir?",
             choices: [
@@ -969,7 +1684,7 @@ const TEST_6 = {
             explanation: "Yüzey akımı yoksa: Teğetsel H sürekliliği (H₁t=H₂t) ve normal B sürekliliği (B₁n=B₂n)."
         },
         {
-            id: "t6q5",
+            id: "t11q5",
             topic: "Endüktans",
             text: "Koaksiyel kablo (iç yarıçap a, dış yarıçap b, geçirgenlik μ, uzunluk ℓ) için yalıtkan bölgedeki toplam endüktans hangisidir?",
             choices: [
@@ -982,7 +1697,7 @@ const TEST_6 = {
             explanation: "Wm=½LI² ve Wm=(μI²ℓ/4π)ln(b/a) → L=(μℓ/2π)ln(b/a) H"
         },
         {
-            id: "t6q6",
+            id: "t11q6",
             topic: "Faraday Yasası",
             text: "Faraday yasasına göre bir devrede indüklenen EMF hangi ifadeyle verilir?",
             choices: [
@@ -995,7 +1710,7 @@ const TEST_6 = {
             explanation: "Faraday yasası: Vemf=−dΨ/dt. Eksi işareti Lenz yasasından gelir (indüklenen akım neden olan değişime karşı çıkar)."
         },
         {
-            id: "t6q7",
+            id: "t11q7",
             topic: "Motionel EMF",
             text: "B vektörü dikey yönde (otomobilin normali ile θ=0°) sabit B alanında, aracın hızı iki katına çıkarılırsa indüklenen EMF nasıl değişir?",
             choices: [
@@ -1008,7 +1723,7 @@ const TEST_6 = {
             explanation: "Vemf=vBLcosθ — hız (v) ile doğru orantılıdır. v→2v yapılırsa Vemf→2Vemf olur."
         },
         {
-            id: "t6q8",
+            id: "t11q8",
             topic: "Yer Değiştirme Akımı",
             text: "Bir kondansatörde frekans iki katına çıkarılırsa, diğer değerler sabit tutulursa maksimum yer değiştirme akım yoğunluğu nasıl değişir?",
             choices: [
@@ -1021,7 +1736,7 @@ const TEST_6 = {
             explanation: "|Jd|max=ε₀E₀ω=ε₀E₀×2πf. Frekans 2 katına çıkınca ω da 2 katına çıkar → Jd,max iki katına artar."
         },
         {
-            id: "t6q9",
+            id: "t11q9",
             topic: "Dalga İmpedansı",
             text: "ε=9ε₀, μ=μ₀ olan kayıpsız bir ortamın karakteristik empedansı η kaçtır? (η₀=120π≈377 Ω)",
             choices: [
@@ -1034,7 +1749,7 @@ const TEST_6 = {
             explanation: "η=η₀/√εr=120π/√9=120π/3=40π≈125.7 Ω"
         },
         {
-            id: "t6q10",
+            id: "t11q10",
             topic: "Faz Hızı & Dalga Boyu",
             text: "Bir ortamda ε=16ε₀, μ=μ₀ ve f=100 MHz ise dalga boyu λ ve faz hızı vp kaçtır?",
             choices: [
@@ -1052,5 +1767,5 @@ const TEST_6 = {
 /* ===================================================================
    EXPORT
    =================================================================== */
-const ALL_TESTS = [TEST_1, TEST_2, TEST_3, TEST_4, TEST_5, TEST_6];
+const ALL_TESTS = [TEST_1, TEST_2, TEST_3, TEST_4, TEST_5, TEST_6, TEST_7, TEST_8, TEST_9, TEST_10, TEST_11];
 const ALL_REFERENCE = REFERENCE_QUESTIONS;
