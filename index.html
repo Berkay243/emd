@@ -45,6 +45,7 @@
             <div class="home-footer">
                 <div class="stat-pill" id="stat-total">📚 Yükleniyor...</div>
                 <div class="stat-pill" id="stat-done">✅ 0 test tamamlandı</div>
+                <button class="stat-pill btn-formulas-pill" onclick="showFormulas()" id="btn-formulas-home">📐 Formül Kitabı</button>
             </div>
         </div>
     </div>
@@ -120,7 +121,22 @@
         <div class="ref-container" id="review-container"></div>
     </div>
 
-</div>
+    <!-- ===== SCREEN: FORMULAS ===== -->
+    <div id="screen-formulas" class="screen">
+        <div class="ref-header">
+            <button class="btn-back" id="btn-back-formulas" onclick="backFromFormulas()">← Geri</button>
+            <h2>📐 Formül Kitabı</h2>
+            <p class="ref-sub">Hafta 1–11 ders notlarından derlenen sınav formülleri</p>
+        </div>
+        <!-- Search bar -->
+        <div class="formula-search-wrap">
+            <input type="text" id="formula-search" class="formula-search" placeholder="🔍  Formül veya konu ara... (örn: Ampere, Lorentz, akım)" oninput="filterFormulas(this.value)">
+        </div>
+        <div class="formula-container" id="formula-container">
+            <!-- JS tarafından doldurulur -->
+        </div>
+    </div>
+
 
 <!-- MODAL: Çıkış onayı -->
 <div id="modal-leave" class="modal-overlay" style="display:none">
@@ -135,6 +151,7 @@
     </div>
 </div>
 
+<script src="formulas.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>
